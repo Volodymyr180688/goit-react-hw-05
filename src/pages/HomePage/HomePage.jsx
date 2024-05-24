@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import {fetchTrendMovies} from '../../api-TMDB'
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import Loader from '../../components/Loader/Loader'
-import MoviesList from '../../components/MoviesList/MoviesList'
+// import MoviesList from '../../components/MoviesList/MoviesList'
 
 export default function HomePage() {
     const [trendMovies, setTrendMovies] = useState([]);
@@ -29,8 +28,8 @@ export default function HomePage() {
         <div>
             <h1>Trending today</h1>
             {loading && <Loader />}
-            <MoviesList trendMovies={trendMovies} />
-        
+            {/* <MoviesList trendMovies={trendMovies} /> */}
+        <Toaster position="top-right" reverseOrder={false} />
         </div>
     );
 }

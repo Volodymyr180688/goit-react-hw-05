@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import {fetchTrendMovies} from '../../api-TMDB'
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import Loader from '../../components/Loader/Loader'
 import MovieList from '../../components/MovieList/MovieList'
 import style from './HomePage.module.css'

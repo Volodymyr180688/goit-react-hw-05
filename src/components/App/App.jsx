@@ -4,6 +4,7 @@ import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 import Navigation from '../Navigation/Navigation';
 import Loader from '../Loader/Loader'
 import style from './App.module.css'
+import { Toaster } from 'react-hot-toast';
 
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
@@ -28,7 +29,7 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       </Suspense>
-      
+      <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
 }

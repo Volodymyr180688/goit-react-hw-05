@@ -29,7 +29,7 @@ export default function HomePage() {
             <h1 className={style.title}>Trending today</h1>
             {loading && <Loader />}
             <MoviesList movies={trendMovies} />
-        <Toaster position="top-right" reverseOrder={false} />
+        
         </div>
     );
 }

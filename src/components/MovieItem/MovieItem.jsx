@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import style from './MovieItem.module.css';
 
@@ -19,3 +20,10 @@ export default function MovieItem({ movie }) {
         </div>
     );
 }
+MovieItem.propTypes = {
+    movie: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        poster_path: PropTypes.string,
+        title: PropTypes.string.isRequired,
+    }).isRequired,
+};

@@ -37,12 +37,13 @@ export default function MovieDetailsPage() {
                 <IoArrowBackCircleOutline className={style.icon}/>
                 Go back
             </Link>
-            <div className={style["movie-info"]}> 
+            {loading && <Loader/> }
+            <div className={style["movie-info"]}>                
                 
-                <img src={poster_path ? `https://image.tmdb.org/t/p/w3100${poster_path}`
+                <img src={poster_path ? `https://image.tmdb.org/t/p/w300${poster_path}`
                     : defaultImg} 
                     loading='lazy' alt='Movie poster' className={style.img} />
-                <div>
+                <div className={style.description}>
                     <h1>{original_title}</h1>
                     <p>User score: {scoreToFixed}</p>
                     <h2>Overview</h2>

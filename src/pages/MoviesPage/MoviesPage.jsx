@@ -1,18 +1,18 @@
-import { useSearchParams, useLocation } from "react-router-dom";
-import { useState, useEffect, useRef } from 'react';
+import { useSearchParams } from "react-router-dom";
+import { useState, useEffect } from 'react';
 import { fetchSearchMovie } from '../../api-TMDB';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Loader from '../../components/Loader/Loader';
 import toast from 'react-hot-toast';
 import style from './MoviesPage.module.css';
-import MoviesList from "../../components/MoviesList/MoviesList";
+import MovieList from "../../components/MovieList/MovieList";
 
 export default function MoviesPage() {    
     const [searchParams, setSearchParams] = useSearchParams();
     const movieName = searchParams.get('movieName') ?? '';
     const [moviesList, setMoviesList] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [formSubmitted, setFormSubmitted] = useState(false);
+    const [error, setError] = useState(false);
     
 
     
@@ -24,19 +24,23 @@ export default function MoviesPage() {
         const getMovieSearch = async (movieName) => {
             try {
                 const data = await fetchSearchMovie(movieName);
-                if (!data.results.length && formSubmitted) { 
+                if (!data.results.length) { 
+                    setError(true);
                     toast.error('There are no movies with this request. Please, try again');
                     return;
                 }
                 setMoviesList(data.results);
             } catch (error) {
+                setError(true);
+                console.log(error);
                 toast.error("Whoops. Something went wrong! Please try reloading this page!");
             } finally {
                 setLoading(false);
+                setError(false);
             }
         };
         getMovieSearch(movieName);
-    }, [movieName, formSubmitted]);
+    }, [movieName]);
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -48,7 +52,6 @@ export default function MoviesPage() {
         }
         setSearchParams({ movieName: newMovieName });
         searchForm.reset();
-        setFormSubmitted(true);
 
     }
 
@@ -56,7 +59,8 @@ export default function MoviesPage() {
         <div className={style.container}>
             <SearchBar onSubmit={handleSubmit} />
             {loading && <Loader />}
-            <MoviesList movies={moviesList} />
+            {error && <p>There is no movies with this request. Please, try again</p>}
+            <MovieList movies={moviesList} />
         </div>
     );
 }

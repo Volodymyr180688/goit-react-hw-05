@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import {fetchTrendMovies} from '../../api-TMDB'
 import toast, { Toaster } from "react-hot-toast";
 import Loader from '../../components/Loader/Loader'
-import MoviesList from '../../components/MoviesList/MoviesList'
+import MovieList from '../../components/MovieList/MovieList'
 import style from './HomePage.module.css'
 
 export default function HomePage() {
@@ -28,7 +28,7 @@ export default function HomePage() {
         <div className={style. container}>
             <h1 className={style.title}>Trending today</h1>
             {loading && <Loader />}
-            <MoviesList movies={trendMovies} />
+            <MovieList movies={trendMovies} />
         
         </div>
     );

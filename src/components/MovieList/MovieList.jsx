@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import MovieItem from '../MovieItem/MovieItem';
-import style from './MoviesList.module.css'
+import style from './MovieList.module.css'
 
 
-export default function MoviesList({ movies }) { 
+export default function MovieList({ movies }) { 
     return (
         <ul className={style.container}>
             {movies.map((movie) => (
@@ -14,6 +14,6 @@ export default function MoviesList({ movies }) {
         </ul>
     );
 }
-MoviesList.propTypes = {
+MovieList.propTypes = {
     movies: PropTypes.array.isRequired,
 };

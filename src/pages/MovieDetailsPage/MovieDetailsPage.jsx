@@ -12,7 +12,6 @@ export default function MovieDetailsPage() {
     const [loading, setLoading] = useState(false);
     const location = useLocation();
     const backLinkRef = useRef(location.state ?? '/movies')
-    console.log(backLinkRef);
     
 
     useEffect(() => {
@@ -33,7 +32,7 @@ export default function MovieDetailsPage() {
     const { original_title, overview, genres, poster_path, vote_average } = movieDetails;
     const scoreToFixed = Number(vote_average).toFixed(2);
     const defaultImg = 'https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg';
-console.log(location);
+
     return (
         <div className={style.container}>
             <Link to={backLinkRef.current} className={style["back-btn"]}>

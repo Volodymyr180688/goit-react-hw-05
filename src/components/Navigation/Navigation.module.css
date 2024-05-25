@@ -17,7 +17,6 @@
   display: block;
   font-size: 24px;
   padding: 10px;
-
   border-radius: 12px;
   color: black;
   background-color: rgb(238, 157, 100);
@@ -25,4 +24,5 @@
 .active {
   color: rgb(150, 2, 2);
   border: 1px solid rgb(150, 2, 2);
+  background-color: rgb(245, 202, 171);
 }

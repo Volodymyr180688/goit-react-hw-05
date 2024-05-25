@@ -37,6 +37,7 @@ export default function MovieDetailsPage() {
                 <IoArrowBackCircleOutline className={style.icon}/>
                 Go back
             </Link>
+            {loading && <Loader /> }
             <div className={style["movie-info"]}>                
                 
                 <img src={poster_path ? `https://image.tmdb.org/t/p/w300${poster_path}`

@@ -39,7 +39,7 @@ export default function MovieDetailsPage() {
             </Link>
             <div className={style["movie-info"]}> 
                 
-                <img src={poster_path ? `https://image1.tmdb.org/t/p/w3100${poster_path}`
+                <img src={poster_path ? `https://image.tmdb.org/t/p/w3100${poster_path}`
                     : defaultImg} 
                     loading='lazy' alt='Movie poster' className={style.img} />
                 <div>

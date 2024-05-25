@@ -11,7 +11,7 @@ export default function MovieItem({ movie }) {
                 <img 
     className={style.image}
     src={poster_path 
-        ? `https://image1.tmdb.org/t/p/w500/${poster_path}` 
+        ? `https://image.tmdb.org/t/p/w500/${poster_path}` 
         : defaultImg}
     alt={title}
 />

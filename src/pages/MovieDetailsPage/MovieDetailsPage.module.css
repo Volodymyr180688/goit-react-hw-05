@@ -83,3 +83,7 @@
   border-color: rgb(184, 92, 7);
   background-color: burlywood;
 }
+.active {
+  color: rgb(184, 92, 7);
+  text-decoration: underline;
+}

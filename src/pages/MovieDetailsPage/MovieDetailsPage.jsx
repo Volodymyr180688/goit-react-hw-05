@@ -1,10 +1,11 @@
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { fetchMovieDetails } from '../../api-TMDB';
 import Loader from '../../components/Loader/Loader';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Link, NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import style from './MovieDetailsPage.module.css';
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
 import toast from 'react-hot-toast';
+import clsx from 'clsx';
 
 export default function MovieDetailsPage() {
     const [movieDetails, setMovieDetails] = useState({});
@@ -12,6 +13,10 @@ export default function MovieDetailsPage() {
     const [loading, setLoading] = useState(false);
     const location = useLocation();
     const backLinkRef = useRef(location.state ?? '/movies')
+
+    const buildLinkClass = ({ isActive }) => {
+  return clsx(style["info-link"], isActive && style.active);
+};
     
 
     useEffect(() => {
@@ -60,10 +65,10 @@ export default function MovieDetailsPage() {
                 <h3 className={style["add-info-title"]}>Additional information</h3>
                 <ul className={style["add-info-list"]}>
                     <li className={style["add-info-item"]}>
-                        <Link to="cast" state={{ ...location.state }} className={style["info-link"]}>Cast</Link>
+                        <NavLink to="cast" state={{ ...location.state }} className={buildLinkClass}>Cast</NavLink>
                     </li>
                     <li className={style["add-info-item"]}>
-                        <Link to="reviews" state={{ ...location.state }} className={style["info-link"]}>Reviews</Link>
+                        <NavLink to="reviews" state={{ ...location.state }} className={buildLinkClass}>Reviews</NavLink>
                     </li>
                 </ul>
             </div>

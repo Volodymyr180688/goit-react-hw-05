@@ -18,6 +18,7 @@ export default function MovieItem({ movie }) {
     alt={title}
 />
             </Link>
+            <p className={style.title}>{title}</p>
         </div>
     );
 }
